@@ -2,7 +2,7 @@ name: Publish 🚀
 
 on:
   push:
-    branches: [main,develop]
+    branches: [main]
 
 permissions:
   contents: write

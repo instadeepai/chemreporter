@@ -1,6 +1,6 @@
 [project]
 name = "chemreporter"
-version = "0.1.0b0"
+version = "0.1.0a0"
 description = "Python tool for flexible and reproducible curation of MLIP datasets."
 requires-python = ">=3.11,<3.14"
 license-files = [

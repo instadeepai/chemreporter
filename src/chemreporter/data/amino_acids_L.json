@@ -1,0 +1,22 @@
+{
+    "Ala": {"smarts": "[N:1]-[C@@H:2](-[CH3])-[C:3](=O)(-[N,O,H])", "description": "Alanine"},
+    "Arg": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[CH2]-[CH2]-[N:4]-C(=[NH,NH2])-[NH2,NH3])-[C:3](=O)-[O,N,H]", "description": "Arginine (neutral or charged)"},
+    "Asn": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[C](=O)-[NH2])-[C:3](=O)(-[N,O,H])", "description": "Asparagine"},
+    "Asp": {"smarts": "[N:1]-[C@@H:2](-[CH2]-C(=O)-[O,OH])-[C:3](=O)-[O,N,H]", "description": "Aspartic acid (negative or neutral)"},
+    "Cys": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[S])-[C:3](=O)(-[N,O,H])", "description": "Cysteine (free or bonded)"},
+    "Gln": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[CH2]-[C](=O)-[NH2])-[C:3](=O)(-[N,O,H])", "description": "Glutamine"},
+    "Glu": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[CH2]-[C](=O)[O,$([OH])])-[C:3](=O)(-[N,O,H])", "description": "Glutamic acid(negative or neutral)"},
+    "Gly": {"smarts": "[N:1]-[CH2:2]-[C:3](=O)(-[N,O,H])", "description": "Glycine"},
+    "His": {"smarts": "[N:1]-[C@@H](-C-[c,C]1[c,C][nH,n,N,NH][c,C][nH,n,N,NH]1)-C(=O)(-[N,O,H])", "description": "Histidine, any protonation state"},
+    "Ile": {"smarts": "[N:1]-[C@@H:2](-[CH](-[CH3])-[CH2]-[C])[C:4](=O)(-[N,O,H])", "description": "Isoleucine (racemic sidechain)"},
+    "Leu": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[CH](-[CH3])-[CH3])-[C:4](=O)(-[N,O,H])", "description": "Leucine"},
+    "Lys": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[CH2]-[CH2]-[CH2]-[$([NH2]),$([NH3])])[C:4](=O)(-[N,O,H])", "description": "Lysine"},
+    "Met": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[CH2]-[S]-[CH3])-[C:3](=O)(-[N,O,H])", "description": "Methionine"},
+    "Phe": {"smarts": "[N:1]-[C@@H:2](-[CH2]c1[cH][cH][cH][cH][cH]1)-[C:3](=O)(-[N,O,H])", "description": "Phenylalanine"},
+    "Pro": {"smarts": "[N;R1]1[CH2]-[CH2]-[CH2]-C1-[C](=O)-[N,O,H]", "description": "Proline"},
+    "Ser": {"smarts": "[N:1]-[C@@H:2](-[CH2]-[OH])-[C:3](=O)-[N,O,H]", "description": "Serine"},
+    "Thr": {"smarts": "[N:1]-[C@@H:2](-[C@H](-[OH])-[CH3])-[C:3](=O)(-[N,O,H])", "description": "Threonine"},
+    "Trp": {"smarts": "[N:1]-[C@@H:2](-[CH2]-c1c[nH]c2ccccc12)-[C:3](=O)(-[N,O,H])", "description": "Tryptophan"},
+    "Tyr": {"smarts": "[N:1]-[C@@H:2](-[CH2]-c1[cH][cH]c(O)[cH][cH]1)-[C:3](=O)(-[N,O,H])", "description": "Tyrosine"},
+    "Val": {"smarts": "[N:1]-[C@@H:2](-[CH](-[CH3])-[CH3])-[C:3](=O)(-[N,O,H])", "description": "Valine"}
+}

@@ -1,0 +1,5 @@
+# Test config for ASE LMDB database with charge metadata
+files_path: "tests/source_database_tools/data/small-test.aselmdb"
+database_name: "small-charges"
+split_name: "train"
+file_extension: "aselmdb_omol"

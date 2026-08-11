@@ -1,0 +1,11 @@
+# Path to the ChemReporter query database
+query_database_path : "/path/to/query_database/"
+
+# Path to the output HDF5 file that will be created
+output_path :  "/path/to/output/export.hdf5"
+
+# Path to the keys file produced by the query command
+keys_path: "/path/to/results/filtered_keys.npy"
+
+num_workers: 1
+num_files_to_export: 20

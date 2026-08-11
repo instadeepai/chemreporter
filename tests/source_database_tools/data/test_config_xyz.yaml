@@ -1,0 +1,5 @@
+# Test config for XYZ database
+files_path: "tests/source_database_tools/data/xyz-test.xyz"
+database_name: "small"
+split_name: "train"
+file_extension: "xyz"

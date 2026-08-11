@@ -1,0 +1,88 @@
+[project]
+name = "chemreporter"
+version = "0.1.0b0"
+description = "Python tool for flexible and reproducible curation of MLIP datasets."
+requires-python = ">=3.11,<3.14"
+license-files = [
+    "LICENSE"
+]
+authors = [
+    {name="InstaDeep", email="m.bluntzer@instadeep.com"},
+]
+readme = "README.md"
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: Apache Software License",
+]
+
+dependencies = [
+    "pydantic>=2.10.2",
+    "polars>=1.32.2",
+    "ase>=3.20.0",
+    "h5py>=3.15.1",
+    "fairchem-core>=1.10.0",
+    "rdkit>=2024.3.6",
+    "openbabel-wheel>=3.1",
+    "matscipy>=1.1.0",
+    "omegaconf>=2.3.0",
+    "cloudpathlib[all]>=0.23.0",
+    # direct dep so [tool.uv.sources] can pin it to the CPU index;
+    "torch",
+]
+
+
+[project.scripts]
+chemreporter = "chemreporter.main:main"
+
+
+[tool.uv.pip]
+dependency-metadata = [
+  { name = "openbabel", version = "3.1.1" }
+]
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+
+
+[tool.coverage.report]
+include_namespace_packages = true
+
+[dependency-groups]
+dev = [
+    "ruff>=0.13.0",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pre-commit>=4.0.1", #needs git>2.39
+    "sphinx>=8.1.3",
+    "furo>=2024.8.6",
+    "ipykernel>=6.29.5",
+    "tox>=4.31.0",
+    "mlip>=0.2.4",
+    "python-dotenv>=1.2.1",
+    "myst-parser>=4.0.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[project.urls]
+"Homepage" = "https://github.com/instadeepai/chemreporter/"

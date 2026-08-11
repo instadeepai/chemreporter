@@ -1,0 +1,35 @@
+{
+    "Ade": {
+        "smarts": [
+            "[CH]N1[CH][N]c2c1ncnc2N",
+            "[CH]n1cnc2c1[N]C=N[C]2N"
+        ],
+        "description": "Ade (2 patterns)"
+    },
+    "Cyt": {
+        "smarts": [
+            "[CH]N1[CH][CH]C(=NC1=O)N"
+        ],
+        "description": "Cyt -  (1 pattern)"
+    },
+    "Gua": {
+        "smarts": [
+            "Nc1[nH]c(=O)c2c(n1)n([CH])cn2",
+            "[CH]N1[CH][N]c2c1nc(N)[nH]c2=O"
+        ],
+        "description": "Gua - (2 patterns)"
+    },
+    "Thy": {
+        "smarts": [
+            "Cc1c[nH]c(=O)[nH]c1=O"
+        ],
+        "description": "Thy - fallback SMILES (no DT in source PDB)"
+    },
+    "Ura": {
+        "smarts": [
+            "[CH]N1[CH][CH]C(=O)NC1=O",
+            "[CH]n1ccc(=O)[nH]c1=O"
+        ],
+        "description": "Ura (2 patterns)"
+    }
+}

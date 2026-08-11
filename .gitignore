@@ -15,6 +15,7 @@ configs
 internal
 open_source
 scripts
-tutorials
+./tutorials
 Dockefile
 manifest.yaml
+aux_data

@@ -1,6 +1,6 @@
 [project]
 name = "chemreporter"
-version = "0.1.0b0"
+version = "0.1.0a1"
 description = "Python tool for flexible and reproducible curation of MLIP datasets."
 requires-python = ">=3.11,<3.14"
 license-files = [
@@ -42,12 +42,6 @@ dependencies = [
 [project.scripts]
 chemreporter = "chemreporter.main:main"
 
-[tool.setuptools]
-package-dir = { "" = "src" }
-packages = ["chemreporter"]
-
-[tool.setuptools.package-data]
-chemreporter = ["data/*.json"]
 
 [tool.uv.pip]
 dependency-metadata = [
@@ -65,12 +59,6 @@ torch = { index = "pytorch" }
 [[tool.uv.index]]
 name = "pypi"
 url = "https://pypi.org/simple"
-
-[tool.uv]
-package = true
-
-[tool.hatch.build]
-sources = ["chemreporter"]
 
 
 [tool.coverage.report]
@@ -90,6 +78,10 @@ dev = [
     "python-dotenv>=1.2.1",
     "myst-parser>=4.0.0"
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 
 [project.urls]

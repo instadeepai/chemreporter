@@ -1,0 +1,424 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Sampling" href="../guides/sampling.html"><link rel="prev" title="Query Examples" href="query_examples.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Query Database Schema - ChemReporter docs</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=65b35898" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">ChemReporter docs</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">ChemReporter docs</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guides/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/cli.html">Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configs.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_examples.html">Query Examples</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Query Database Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/sampling.html">Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hdf5_schema.html">Export Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">Units and Physical Quantities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source_datasets/source_datasets.html">Supported Source Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/tutorials.html">Advanced Tutorials</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/reference/database_schema.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="query-database-schema">
+<h1>Query Database Schema<a class="headerlink" href="#query-database-schema" title="Link to this heading">¶</a></h1>
+<p>This page lists every field of the Query Database that can be referenced in a
+<code class="docutils literal notranslate"><span class="pre">query</span></code> step’s filter expression (see <a class="reference internal" href="query_examples.html"><span class="std std-doc">Query Examples</span></a> for
+example syntax). This table is generated directly from the
+<a class="reference external" href="https://github.com/instadeepai/chemreporter/tree/main/src/chemreporter/query_database_tools/table_schemas.py"><code class="docutils literal notranslate"><span class="pre">chemreporter.query_database_tools.table_schemas</span></code></a>
+module.</p>
+<section id="core-fields">
+<h2>Core Fields<a class="headerlink" href="#core-fields" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code> (String): Unique identifier for each structure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">entry_key</span></code> (String): Unique identifier for each structure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">database_name</span></code> (String): Name of the source database (set when processing)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">split_name</span></code> (String): Split name (set when processing)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basis_set</span></code> (String): Basis set used for the DFT calculation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">functional</span></code> (String): Functional used for the DFT calculation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">correction_term</span></code> (String): Dispersion or post-DFT correction term</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subset</span></code> (String): Dataset subset name (for example spice, anix, biomolecules)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">composition</span></code> (String): Brutto formula of the structure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">net_charge</span></code> (Int64, e): Net molecular charge</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spin_multiplicity</span></code> (Float64, unitless): Spin multiplicity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_atoms</span></code> (Int64): Number of atoms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atomic_numbers</span></code> (List(Int64)): Atomic numbers by atom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">energy</span></code> (Float64, eV): Raw DFT total energy (not cohesive/atomization energy)</p></li>
+</ul>
+</section>
+<section id="computed-properties">
+<h2>Computed Properties<a class="headerlink" href="#computed-properties" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dipole_moment_magnitude</span></code> (Float64, Debye): Magnitude of dipole moment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">net_force_norm</span></code> (Float64, eV/Å): Norm of net force vector</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_force_norm</span></code> (Float64, eV/Å): Maximum force magnitude on any atom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atomic_symbols</span></code> (String): Unique element symbols in alphabetical order</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">molecular_weight</span></code> (Float64, g/mol): Molecular weight</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_molecular_structure_valid</span></code> (Boolean): Historic structure check (hydrogen coordination)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_water_molecules</span></code> (Int64): Number of water molecules</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graph_properties_candidate</span></code> (Boolean): Whether the structure is suitable for graph-based analysis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_graph_properties</span></code> (Boolean): Whether graph property calculation failed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logp</span></code> (Float64, unitless): Partition coefficient (lipophilicity)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tpsa</span></code> (Float64, Å²): Topological polar surface area</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smiles</span></code> (String): SMILES representation</p></li>
+</ul>
+</section>
+<section id="molecular-fingerprints">
+<h2>Molecular Fingerprints<a class="headerlink" href="#molecular-fingerprints" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fingerprint_0</span></code> to <code class="docutils literal notranslate"><span class="pre">fingerprint_1023</span></code> (Int64, 0 or 1): 1024-bit Morgan fingerprint for similarity searches.</p></li>
+</ul>
+</section>
+<section id="bio-motif-counts">
+<h2>Bio motif counts<a class="headerlink" href="#bio-motif-counts" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">num_ala</span></code>, <code class="docutils literal notranslate"><span class="pre">num_arg</span></code>, <code class="docutils literal notranslate"><span class="pre">num_asn</span></code>, <code class="docutils literal notranslate"><span class="pre">num_asp</span></code>, <code class="docutils literal notranslate"><span class="pre">num_cys</span></code>, <code class="docutils literal notranslate"><span class="pre">num_gln</span></code>, <code class="docutils literal notranslate"><span class="pre">num_glu</span></code>, <code class="docutils literal notranslate"><span class="pre">num_gly</span></code>, <code class="docutils literal notranslate"><span class="pre">num_his</span></code>, <code class="docutils literal notranslate"><span class="pre">num_ile</span></code>, <code class="docutils literal notranslate"><span class="pre">num_leu</span></code>, <code class="docutils literal notranslate"><span class="pre">num_lys</span></code>, <code class="docutils literal notranslate"><span class="pre">num_met</span></code>, <code class="docutils literal notranslate"><span class="pre">num_phe</span></code>, <code class="docutils literal notranslate"><span class="pre">num_pro</span></code>, <code class="docutils literal notranslate"><span class="pre">num_ser</span></code>, <code class="docutils literal notranslate"><span class="pre">num_thr</span></code>, <code class="docutils literal notranslate"><span class="pre">num_trp</span></code>, <code class="docutils literal notranslate"><span class="pre">num_tyr</span></code>, <code class="docutils literal notranslate"><span class="pre">num_val</span></code> (Int64): RDKit substructure counts per motif code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_protein</span></code> (Boolean): True when the sum of amino-acid motif counts exceeds 3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_ade</span></code>, <code class="docutils literal notranslate"><span class="pre">num_cyt</span></code>, <code class="docutils literal notranslate"><span class="pre">num_gua</span></code>, <code class="docutils literal notranslate"><span class="pre">num_thy</span></code>, <code class="docutils literal notranslate"><span class="pre">num_ura</span></code> (Int64): RDKit substructure counts per motif code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_nucleobase</span></code> (Boolean): True when the sum of nucleobase motif counts exceeds 3</p></li>
+</ul>
+</section>
+<section id="reaction-properties">
+<h2>Reaction Properties<a class="headerlink" href="#reaction-properties" title="Link to this heading">¶</a></h2>
+<p>Present when extracted from OMOL25 <code class="docutils literal notranslate"><span class="pre">source</span></code> metadata for reactive subsets.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reaction_id</span></code> (String): Reaction identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reaction_pathway_id</span></code> (Int64): Pathway identifier (if applicable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_reactant</span></code> (Boolean): Whether the structure is a reactant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_product</span></code> (Boolean): Whether the structure is a product</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_transition_state</span></code> (Boolean): Whether the structure is a transition state</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reaction_step_idx</span></code> (Int64): Index of the reaction step</p></li>
+</ul>
+</section>
+<section id="catalysis-properties">
+<h2>Catalysis Properties<a class="headerlink" href="#catalysis-properties" title="Link to this heading">¶</a></h2>
+<p>Present when extracted from OC20 supplementary metadata.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_bulk_id</span></code> (String): Catalyst bulk identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_adsorbate_id</span></code> (String): Catalyst adsorbate identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_bulk_symbols</span></code> (String): Element symbols in the bulk</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_adsorbate_symbols</span></code> (String): Element symbols in the adsorbate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_adsorbate_smiles</span></code> (String): SMILES of the adsorbate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_num_adsorbate_atoms</span></code> (Int64): Number of atoms in the adsorbate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_num_bulk_atoms</span></code> (Int64): Number of atoms in the bulk</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_reference_energy</span></code> (Float64, eV): Reference energy of the catalyst system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_class</span></code> (String): Catalyst class label</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_anomaly</span></code> (String): Catalyst anomaly label</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_substrate_height</span></code> (Float64, Å): Substrate height</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_miller_index</span></code> (List(Int64)): Miller indices (h, k, l) of the surface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_relaxation_frame_idx</span></code> (Int64): Relaxation frame index</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catalyst_xyz_adsorbate_is_valid</span></code> (Boolean): Whether adsorbate coordinates pass the OC20 xyz validity check</p></li>
+</ul>
+<p>For more detailed information about the units used for each field, see
+<a class="reference internal" href="units.html"><span class="std std-doc">Units and Physical Quantities</span></a>.</p>
+</section>
+<section id="known-caveats">
+<h2>Known caveats<a class="headerlink" href="#known-caveats" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">num_water_molecules</span></code> might be slightly overestimated: compounds containing an
+R-OHH group are counted as containing one water molecule. Such cases are
+assumed to be sufficiently rare, so this approximation is not currently
+corrected for.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../guides/sampling.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Sampling</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="query_examples.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Query Examples</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, InstaDeep Ltd
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Query Database Schema</a><ul>
+<li><a class="reference internal" href="#core-fields">Core Fields</a></li>
+<li><a class="reference internal" href="#computed-properties">Computed Properties</a></li>
+<li><a class="reference internal" href="#molecular-fingerprints">Molecular Fingerprints</a></li>
+<li><a class="reference internal" href="#bio-motif-counts">Bio motif counts</a></li>
+<li><a class="reference internal" href="#reaction-properties">Reaction Properties</a></li>
+<li><a class="reference internal" href="#catalysis-properties">Catalysis Properties</a></li>
+<li><a class="reference internal" href="#known-caveats">Known caveats</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

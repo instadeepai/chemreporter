@@ -1,0 +1,107 @@
+name: Tests and Linters 🧪
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  linters:
+    runs-on: instadeep-ci
+    container:
+      image: python:3.12-slim-bookworm
+
+    steps:
+      - name: Git setup
+        run: |
+          apt-get update && apt-get install -y \
+          coreutils \
+          git
+          git config --system --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Checkout code  📦
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Lint
+        run: |
+          uv sync --group dev
+          uv run pre-commit run --all-files --verbose
+
+  docs:
+    runs-on: instadeep-ci
+    container:
+      image: python:3.12-slim-bookworm
+
+    steps:
+      - name: Git setup
+        run: |
+          apt-get update && apt-get install -y \
+          coreutils \
+          git
+          git config --system --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Checkout code  📦
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Build documentation
+        run: |
+          uv sync --group dev
+          uv run sphinx-build -W -b html docs/source/ _build/
+
+  tests:
+    runs-on: instadeep-ci-4
+    container:
+      image: python:3.12-slim-bookworm
+
+    steps:
+      - name: Git and openbabel setup
+        run: |
+          apt-get update && apt-get install -y \
+          coreutils \
+          git \
+          openbabel \
+          libopenbabel-dev
+
+      - name: Checkout code  📦
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+
+      - name: Add safe directory 🔒
+        run: git config --system --add safe.directory $GITHUB_WORKSPACE
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Run tests 🧪
+        run: |
+          uv sync --group dev
+          uv run pytest --verbose --cov-report xml:coverage.xml \
+                            --cov-report term-missing \
+                            --junitxml=pytest.xml \
+                            --cov=chemreporter
+
+      - name: Pytest coverage comment 💬
+        id: coverageComment
+        uses: MishaKav/pytest-coverage-comment@287292879eaaff04116f36d3eb1a670f6e5df1a4
+        with:
+          pytest-xml-coverage-path: ./coverage.xml
+          junitxml-path: ./pytest.xml
+
+      - name: Create the Badge
+        if: github.repository == 'instadeepai/chemreporter' && github.ref == 'refs/heads/main'
+        uses: schneegans/dynamic-badges-action@e9a478b16159b4d31420099ba146cdc50f134483
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: f2fe3c924dd33b0aa1c17aa49f522e5e
+          filename: pytest-coverage-comment.json
+          label: Test Coverage
+          message: ${{ steps.coverageComment.outputs.coverage }}
+          color: ${{ steps.coverageComment.outputs.color }}
+          namedLogo: python

@@ -1,0 +1,37 @@
+name: Tox 🧪
+
+on:
+  push:
+    branches: [main, dev]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false  # Keep running other versions even if one fails
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+
+    runs-on: instadeep-ci-4
+    container:
+      image: python:${{ matrix.python-version }}-slim-bookworm
+
+    steps:
+      - name: Git setup
+        run: apt-get update && apt-get install -y coreutils git gcc g++
+
+      - name: Checkout code 📦
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Clean up previous runs 🧹
+        run: rm -rf /tmp/tox-* /tmp/uv-cache 2>/dev/null || true
+
+      - name: Install tox and tox-uv 🔧
+        run: pip install --no-cache-dir tox==4.30.3 tox-uv>=1.0.0
+
+      - name: Run tests with tox 🧪
+        run: tox -e py$(echo ${{ matrix.python-version }} | tr -d .) --recreate --workdir /tmp/.tox
+        env:
+          UV_CACHE_DIR: /tmp/uv-cache
+          TMPDIR: /tmp

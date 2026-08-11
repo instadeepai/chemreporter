@@ -1,0 +1,29 @@
+# Path to the source database to process (local path or s3:// URI)
+source_database_path: "/path/to/source_dataset/"
+
+# Name and split of the source database (used to build entry keys)
+database_name: "omol25"
+split_name: "train"
+
+# Format of the source database files
+# One of: aselmdb_omol, aselmdb_omat, aselmdb_oc, aselmdb_odac, aselmdb_omc, xyz, xyz_oc
+database_format: "aselmdb_omol"
+
+# Path to the ChemReporter query database where the new entries are appended
+query_database_path: "/path/to/query_database/"
+
+# Graph-based processing (RDKit SMILES, fingerprints, bio substructure counts)
+graph_based_processing:
+  enable: True
+  nb_atoms_limit: 600         # skip graph features for structures above this size
+  subsets_skip_list:          # subsets to skip for graph features
+    - elytes
+
+# Number of structures processed per chunk - lower this if memory is tight
+processing_chunk_size: 50000
+
+# Directory of per-database DFT metadata (basis set, functional, dispersion correction)
+source_database_metadata:
+  basis_set: "def2-TZVPD"
+  functional: "ωB97M-V"
+  correction_term: "VV10"

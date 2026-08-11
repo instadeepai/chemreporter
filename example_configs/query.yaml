@@ -1,0 +1,14 @@
+# Path to the ChemReporter query database where the queries will be executed
+query_database_path: "/path/to/query_database/"
+
+# Path to the results file where the filtered keys will be saved
+results_path:  "/path/to/results/filtered_keys.npy"
+
+# The query to be executed
+query:  database_name = 'omol25' AND max_force_norm < 15 AND net_force_norm < 1.0e-3
+
+# Sample actions to be executed - remove if not needed
+sampling:
+  n_samples: 100000
+  method: random
+  seed: 42 # for reproducibility

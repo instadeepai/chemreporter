@@ -1,7 +1,7 @@
 # 🧪 ChemReporter
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
-[![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Tests and Linters](https://github.com/instadeepai/chemreporter/actions/workflows/tests_and_linters.yaml/badge.svg?branch=main)](https://github.com/instadeepai/chemreporter/actions/workflows/tests_and_linters.yaml)
@@ -40,7 +40,7 @@ ChemReporter is released under the Apache License 2.0.
 
 ## 📦 Installation
 
-ChemReporter requires Python 3.10 or newer. Install the package with `pip`:
+ChemReporter requires Python 3.11 or newer. Install the package with `pip`:
 
 ```
 pip install chemreporter
@@ -89,3 +89,23 @@ everything in more depth, including:
 - **[Supported source datasets](https://instadeepai.github.io/chemreporter/source_datasets/source_datasets.html)**
   — details and a computational setup comparison for each supported source
   dataset.
+
+
+📚 Citing our work
+We kindly request that you to cite our white paper when using this library:
+
+Marie Bluntzer, Jules Tilly, Christoph Brunken
+ChemReporter: A Framework for Curating and Exporting Large-Scale Chemical Datasets for MLIP Training
+arXiv, 2026, arXiv:2608.16418
+
+The BibTeX formatted citation:
+
+@misc{bluntzer2026chemreporterframeworkcuratingexporting,
+      title={ChemReporter: A Framework for Curating and Exporting Large-Scale Chemical Datasets for MLIP Training},
+      author={Marie Bluntzer and Jules Tilly and Christoph Brunken},
+      year={2026},
+      eprint={2608.16418},
+      archivePrefix={arXiv},
+      primaryClass={physics.chem-ph},
+      url={https://arxiv.org/abs/2608.16418},
+}

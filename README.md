@@ -91,21 +91,23 @@ everything in more depth, including:
   dataset.
 
 
-📚 Citing our work
-We kindly request that you to cite our white paper when using this library:
+## 📚 Citing our work
+
+We kindly request that you cite our white paper when using this library:
 
 Marie Bluntzer, Jules Tilly, Christoph Brunken
-ChemReporter: A Framework for Curating and Exporting Large-Scale Chemical Datasets for MLIP Training
+*ChemReporter: A Framework for Curating and Exporting Large-Scale Chemical Datasets for MLIP Training*
 arXiv, 2026, arXiv:2608.16418
 
-The BibTeX formatted citation:
+### BibTeX
 
+```bibtex
 @misc{bluntzer2026chemreporterframeworkcuratingexporting,
-      title={ChemReporter: A Framework for Curating and Exporting Large-Scale Chemical Datasets for MLIP Training},
-      author={Marie Bluntzer and Jules Tilly and Christoph Brunken},
-      year={2026},
-      eprint={2608.16418},
-      archivePrefix={arXiv},
-      primaryClass={physics.chem-ph},
-      url={https://arxiv.org/abs/2608.16418},
+  title={ChemReporter: A Framework for Curating and Exporting Large-Scale Chemical Datasets for MLIP Training},
+  author={Marie Bluntzer and Jules Tilly and Christoph Brunken},
+  year={2026},
+  eprint={2608.16418},
+  archivePrefix={arXiv},
+  primaryClass={physics.chem-ph},
+  url={https://arxiv.org/abs/2608.16418},
 }

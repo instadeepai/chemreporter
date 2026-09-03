@@ -1,0 +1,10 @@
+/* Force Furo sidebar to always be fully expanded */
+.sidebar-tree .toctree-checkbox ~ ul {
+    display: block !important;
+}
+.sidebar-tree .toctree-checkbox {
+    display: none !important;
+}
+.sidebar-tree label.toctree-toggle {
+    display: none !important;
+}

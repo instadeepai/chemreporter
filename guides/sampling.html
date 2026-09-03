@@ -1,0 +1,462 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Export Schema" href="../reference/hdf5_schema.html"><link rel="prev" title="Query Database Schema" href="../reference/database_schema.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Sampling - ChemReporter docs</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=65b35898" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">ChemReporter docs</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">ChemReporter docs</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/configs.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/query_examples.html">Query Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/database_schema.html">Query Database Schema</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hdf5_schema.html">Export Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/units.html">Units and Physical Quantities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source_datasets/source_datasets.html">Supported Source Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Advanced Tutorials</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/guides/sampling.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="sampling">
+<h1>Sampling<a class="headerlink" href="#sampling" title="Link to this heading">¶</a></h1>
+<p>Once a <code class="docutils literal notranslate"><span class="pre">query</span></code> step has filtered the query database down to the rows you
+care about — see <a class="reference internal" href="../reference/query_examples.html"><span class="std std-doc">Query Examples</span></a> for the
+SQL filter syntax — its <code class="docutils literal notranslate"><span class="pre">sampling</span></code> block lets you pick a subset of those
+rows to keep. In basic usage, <code class="docutils literal notranslate"><span class="pre">method</span></code> is set to <code class="docutils literal notranslate"><span class="pre">random</span></code> or <code class="docutils literal notranslate"><span class="pre">all</span></code>; for
+more advanced use cases, it can instead point at a Python file to run your
+own selection strategy — for example, greedy diversity sampling based on
+Tanimoto distance, shown below as a worked example.</p>
+<section id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sampling</span></code> block controls both how many of the filtered rows are kept
+and how they are chosen. <code class="docutils literal notranslate"><span class="pre">method</span></code> selects the strategy — either a built-in
+name or a path to a plugin file — and the rest of the block supplies
+whatever that strategy needs.</p>
+<p>For the built-in strategies, that’s just <code class="docutils literal notranslate"><span class="pre">n_samples</span></code> and an optional
+<code class="docutils literal notranslate"><span class="pre">seed</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">sampling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">n_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000</span>
+<span class="w">  </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random</span>
+<span class="w">  </span><span class="nt">seed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span><span class="w"> </span><span class="c1"># for reproducibility</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">method:</span> <span class="pre">random</span></code> draws a uniform random subset of size <code class="docutils literal notranslate"><span class="pre">n_samples</span></code>;
+<code class="docutils literal notranslate"><span class="pre">method:</span> <span class="pre">all</span></code> skips sampling entirely and keeps every filtered row. To use
+your own selection logic instead, point <code class="docutils literal notranslate"><span class="pre">method</span></code> at a Python file and pass
+it whatever columns and keyword arguments it needs:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">sampling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/custom_sampling.py</span>
+<span class="w">  </span><span class="nt">required_columns</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"num_atoms"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"energy"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">some_kwarg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method</span></code> — <code class="docutils literal notranslate"><span class="pre">random</span></code>, <code class="docutils literal notranslate"><span class="pre">all</span></code>, or a path to a Python file defining a
+<code class="docutils literal notranslate"><span class="pre">custom_sampling_function</span></code> function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_samples</span></code> — number of rows to keep. Applies to <code class="docutils literal notranslate"><span class="pre">random</span></code> and to custom
+samplers that respect it; omit it (or set it to <code class="docutils literal notranslate"><span class="pre">null</span></code>) to let a custom
+sampler decide how many rows to keep on its own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seed</span></code> — random seed used only for <code class="docutils literal notranslate"><span class="pre">method:</span> <span class="pre">random</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">required_columns</span></code> — extra column name(s) to load and pass to a custom
+sampler alongside <code class="docutils literal notranslate"><span class="pre">entry_key</span></code>, in this example, number of atoms and energy.
+Ignored by the built-in methods.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> — any additional keyword arguments forwarded to a custom
+sampler’s <code class="docutils literal notranslate"><span class="pre">custom_sampling_function</span></code> function.</p></li>
+</ul>
+</section>
+<section id="writing-a-sampling-plugin">
+<h2>Writing a Sampling Plugin<a class="headerlink" href="#writing-a-sampling-plugin" title="Link to this heading">¶</a></h2>
+<p>Create a standard Python file (e.g. <code class="docutils literal notranslate"><span class="pre">my_sampler.py</span></code>) that defines a top-level
+<code class="docutils literal notranslate"><span class="pre">custom_sampling_function</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_sampler.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">custom_sampling_function</span><span class="p">(</span>
+    <span class="n">frame</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span> <span class="o">|</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">n_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">some_kwarg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Return the entry_key of every selected row.</span>
+
+<span class="sd">    `some_kwarg` is an example for a keyword argument (here, not actually used below).</span>
+<span class="sd">    """</span>
+    <span class="n">collected</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">LazyFrame</span><span class="p">)</span> <span class="k">else</span> <span class="n">frame</span>
+    <span class="k">return</span> <span class="n">collected</span><span class="p">[</span><span class="s2">"entry_key"</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()[:</span><span class="n">n_samples</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">frame</span></code> is the filtered query result (with <code class="docutils literal notranslate"><span class="pre">entry_key</span></code> plus whatever columns
+you requested via <code class="docutils literal notranslate"><span class="pre">required_columns</span></code>); <code class="docutils literal notranslate"><span class="pre">custom_sampling_function</span></code> must return the
+list of selected <code class="docutils literal notranslate"><span class="pre">entry_key</span></code> values. The CLI loads the file with
+<code class="docutils literal notranslate"><span class="pre">runpy.run_path</span></code> and raises <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code>/<code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if the file or
+the <code class="docutils literal notranslate"><span class="pre">custom_sampling_function</span></code> function is missing. The function name and
+signature shown above must be followed exactly — the CLI calls
+<code class="docutils literal notranslate"><span class="pre">custom_sampling_function(frame,</span> <span class="pre">n_samples,</span> <span class="pre">**kwargs)</span></code> positionally, so
+renaming it or reordering its parameters will break the plugin.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The plugin mechanism mirrors the “Custom I/O Plugins” section of the
+<a class="reference internal" href="cli.html"><span class="std std-doc">CLI guide</span></a>: a plain Python file loaded dynamically, no package
+installation required.</p>
+</div>
+</section>
+<section id="example-greedy-tanimoto-sampling">
+<h2>Example: Greedy Tanimoto Sampling<a class="headerlink" href="#example-greedy-tanimoto-sampling" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://github.com/instadeepai/chemreporter/blob/main/sampling_examples/greedy_sampling.py"><code class="docutils literal notranslate"><span class="pre">greedy_sampling.py</span></code></a>
+is primarily meant as a worked example of a custom sampling plugin: it
+shows how to write a <code class="docutils literal notranslate"><span class="pre">custom_sampling_function</span></code> that streams through a
+large filtered result set in chunks and selects rows based on a pairwise
+distance computed between them. That said, it is also directly usable if
+greedy diversity sampling fits your use case, not just a reference to
+copy from.</p>
+<p>The plugin greedily selects a chemically diverse subset based on molecular
+fingerprint bit vectors: to compute fingerprint-based similarity,
+we use the Tanimoto index<a class="footnote-reference brackets" href="#tanimoto-paper" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:
+starting from one seed structure, it repeatedly adds the
+next structure whose Tanimoto distance to every structure already selected
+exceeds a threshold, streaming through the filtered rows in chunks so it
+scales to large databases. It relies on <a class="reference external" href="https://docs.jax.dev/">JAX</a> for
+the distance computation, so make sure <code class="docutils literal notranslate"><span class="pre">jax</span></code> is installed in your
+environment; it is not a dependency of ChemReporter itself.</p>
+<p>Here is an example <code class="docutils literal notranslate"><span class="pre">sampling</span></code> config using it:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">sampling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/greedy_sampling.py</span>
+<span class="w">  </span><span class="nt">required_columns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fingerprint_bits</span>
+<span class="w">  </span><span class="nt">n_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">seed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+<span class="w">    </span><span class="nt">chunk_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25000</span>
+<span class="w">    </span><span class="nt">min_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.65</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_samples:</span> <span class="pre">null</span></code> keeps adding structures until no remaining candidate
+clears the threshold, rather than stopping at a fixed count. Set it to an
+integer to cap the subset size at that count instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">required_columns:</span> <span class="pre">fingerprint_bits</span></code> — <code class="docutils literal notranslate"><span class="pre">fingerprint_bits</span></code> is not itself a
+query database column; it’s a special preset name that expands to every
+individual <code class="docutils literal notranslate"><span class="pre">fingerprint_*</span></code> bit column (<code class="docutils literal notranslate"><span class="pre">fingerprint_1</span></code>, <code class="docutils literal notranslate"><span class="pre">fingerprint_2</span></code>,
+…) needed to compute Tanimoto distances, so you don’t have to list them
+all yourself.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_distance_threshold</span></code> — minimum Tanimoto <strong>distance</strong> (<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">similarity</span></code>) a candidate must have to <em>every</em> structure already selected.
+Raise it for a more diverse (and smaller) subset, lower it to keep more
+structures.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> — number of rows processed per streaming batch. Lower it if
+you are memory-constrained.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seed</span></code> — used to pick the random starting structure when you don’t specify
+a <code class="docutils literal notranslate"><span class="pre">start_idx</span></code> yourself.</p></li>
+</ul>
+</section>
+</section>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="tanimoto-paper" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><strong>Why Tanimoto?</strong> Bajusz et al. demonstrated that the
+Tanimoto index, alongside Dice and Cosine metrics, consistently yields optimal
+similarity rankings for binary molecular fingerprints across unbiased compound
+datasets (<a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4456712/">Bajusz et al., 2015</a>).</p>
+</aside>
+</aside>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../reference/hdf5_schema.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Export Schema</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../reference/database_schema.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Query Database Schema</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, InstaDeep Ltd
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Sampling</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li><a class="reference internal" href="#writing-a-sampling-plugin">Writing a Sampling Plugin</a></li>
+<li><a class="reference internal" href="#example-greedy-tanimoto-sampling">Example: Greedy Tanimoto Sampling</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

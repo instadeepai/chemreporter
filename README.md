@@ -1,7 +1,7 @@
 # 🧪 ChemReporter
 
 ![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)
-![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)
+![Python Version](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)
 ![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)
 ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)
 ![Tests and Linters](https://github.com/instadeepai/chemreporter/actions/workflows/tests_and_linters.yaml/badge.svg?branch=main)

@@ -1,6 +1,6 @@
 # Changelog
 
-## Release 0.1.0b0
+## Release 0.1.0
 
 Initial public (open-source) release of ChemReporter.
 
